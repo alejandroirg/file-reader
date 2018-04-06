@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Read Files</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    </head>
+    <body>
+        <div class="separator"></div>
+        <div class="container">
+        <h1>Upload Your PDF Files</h1>
+        <form action="upload" method="POST" enctype="multipart/form-data">
+        <!--<label for="file" class="custom-file-upload">Custom Upload</label><br>-->
+        <input id="file" type="file" name="myFile"><br>
+        <input class="submit" type="submit" value="Submit">
+        </form>
+        </div>
+    </body>
+</html>
