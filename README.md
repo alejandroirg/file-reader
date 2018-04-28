@@ -1,30 +1,40 @@
 # file-reader
 Descripción
+
 File reader es una aplicación que permite la lectura, indexación y envío de información de facturas
 en PDF. Permite subir archivos a la plataforma, los cuales son leídos y posteriormente, junto
 con el script de implementación, esta información puede enviarse a cualquier sitio para que este 
 maneje esta informacion en sus formularios y sea enviado a su base de datos.
 
 Problema identificado
+
 Los proveedores de nuestro cliente le envian facturas al departamento de gestion de documebtos,
 el cual realiza manualmente el indexado de facturas, en este proceso se pudo notar que se pierde mucho tiempo
 en tener que estar analizando individualmente cada una de las facturas para sacar la información importante,
 introducirla en los formulario de la aplicación para luego subirla a la base de datos. Es un proceso muy tardado.
 
 Solución
+
 Identificamos que una solución viable sería intervenir justo en el indexado de las facturas. Los proveedores de nuestro cliente enviarán facturas basadas en una plantilla predeterminada por nosotros, la cual posteriormente llenarán con los datos necesarios y la envoarán al departamente de gestion de documentos. Estas plantillas contendrán llaves las cuales nos permitirán extraer información fácilmente. Una vez que la factura llega al departamento de gestion de documentos, estos utilizarán el programa para leer rápidamente todas las facturas y que automáticamente se suba la información a la base de datos. Ahorrando mucho tiempo.
 
-Arquitectura.
+Arquitectura
+
 La arquitectura de la aplicación será cliente servidor para toda la parte de autenticación de usuarios, ademas de que se estará manejando la subida de templates al servidor, la recuperación de contraseñas y otros archivos. Se estará manejando un java web project con servlets, jsps, html, mysql, css y js.
 
 Tabla de contenidos (ToC) con enlaces.
-1.-Requerimientos
-2.-Paquetes Adicionales
-3.-Instalacion
-4.-Configuracion
-5.-Uso
-6.-Contribucion
-7.-Roadmap
+1.- #Requerimientos
+
+2.- #Paquetes Adicionales
+
+3.- #Instalacion
+
+4.- #Configuracion
+
+5.- #Uso
+
+6.- #Contribucion
+
+7.- #Roadmap
 
 
 # Requerimientos:
