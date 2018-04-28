@@ -107,9 +107,9 @@ public class login extends HttpServlet {
      if(rs.getString("username").equals(username) && rs.getString("password").equals(password)){
      response.sendRedirect("home.html");
      }else{
-     response.sendRedirect("index.html");
      }    
-     }               
+     }
+     response.sendRedirect("index.html");
     }catch(Exception ex){
     out.print(ex);
     }

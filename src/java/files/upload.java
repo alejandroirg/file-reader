@@ -115,21 +115,87 @@ public class upload extends HttpServlet {
       String text = pdfStripper.getText(document);
    
       //Here comes the action.
-      String[] arr = text.split(" ");    
+      String[] arr = text.split(" ");
       ArrayList<String> arr2 = new ArrayList<String>();
       boolean gotit = false;
-      for(String s : arr) {
+      
+      //Por todo el texto
+       for(String s : arr) {   
+       //out.println(s);
        if(gotit == true){
        out.println(s + "<br>");
        arr2.add(s);
        gotit = false;
        }else{
        if(s.equals("Fiscal:") || s.equals("CSD:") || s.equals("emisión:")){
-       out.println(s + "<br>"); 
+       out.println(s + "<br>");
        gotit = true;
        }else{}   
        }
-      }      
+      }
+       
+      //Buscamos los elementos de la tabla con otro for
+       int cont = 0;
+       String cantidad = "";
+       String unidad = "";
+       String descripcion = "";
+       String preciounitario = "";
+       String importe = "";
+
+       for(String s : arr){  
+       //1 - Cantidad
+       //2 - Unidad de Medida
+       //3 - Descripción
+       //4 - Precio Unitario
+       //5 - Importe
+     
+       if(s.equals("°")){
+       cont += 1;
+       }else{
+       
+       switch(cont){
+           case 1:
+               cantidad += s + " "; 
+               break;
+           case 2:
+               unidad += s + " ";
+               break;
+           case 3:
+               descripcion += s + " ";
+               break;
+           case 4:
+               preciounitario += s + " ";
+               break;
+           case 5:
+               importe += s + " "; 
+               break;
+           default:
+               break;
+       }    
+       
+       if(cont == 5){
+       cont = -100;
+       }else{}}
+       
+       }
+       
+       out.println("Cantidad:" + "<br>");
+       out.println(cantidad + "<br>");
+       out.println("Unidad:" + "<br>");
+       out.println(unidad + "<br>");
+       out.println("Descripcion:" + "<br>");
+       out.println(descripcion + "<br>");
+       out.println("Precio Unitario:" + "<br>");
+       out.println(preciounitario + "<br>");
+       out.println("Importe:" + "<br>");
+       out.println(importe + "<br>");
+       
+       arr2.add(cantidad);
+       arr2.add(unidad);
+       arr2.add(descripcion);
+       arr2.add(preciounitario);
+       arr2.add(importe);
+       
       //Closing the document
       document.close();
                //
@@ -158,6 +224,13 @@ public class upload extends HttpServlet {
             out.println("<input type='hidden' name='fiscal' value='"+ arr2.get(0) +"'>");
             out.println("<input type='hidden' name='csd' value='"+ arr2.get(1) +"'>");
             out.println("<input type='hidden' name='emision' value='"+ arr2.get(2) +"'>");
+            
+            out.println("<input type='hidden' name='cantidad' value='"+ arr2.get(3) +"'>");
+            out.println("<input type='hidden' name='unidad' value='"+ arr2.get(4) +"'>");
+            out.println("<input type='hidden' name='descripcion' value='"+ arr2.get(5) +"'>");
+            out.println("<input type='hidden' name='preciounitario' value='"+ arr2.get(6) +"'>");
+            out.println("<input type='hidden' name='importe' value='"+ arr2.get(7) +"'>");
+           
             out.println("<input class='submit' type='submit' value='Send'>");
             out.println("</form>");
             out.println("</div>");

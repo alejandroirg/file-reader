@@ -72,9 +72,16 @@ public class form extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fiscal = request.getParameter("fiscal");
-        String csd = request.getParameter("csd");
-        String emision = request.getParameter("emision");
+        String fiscal = request.getParameter("fiscal").replace("\n", "").replace("\r", "");
+        String csd = request.getParameter("csd").replace("\n", "").replace("\r", "");
+        String emision = request.getParameter("emision").replace("\n", "").replace("\r", "");
+        
+        String cantidad = request.getParameter("cantidad").replace("\n", "").replace("\r", "");
+        String unidad = request.getParameter("unidad").replace("\n", "").replace("\r", "");
+        String descripcion = request.getParameter("descripcion").replace("\n", "").replace("\r", "");
+        String preciounitario = request.getParameter("preciounitario").replace("\n", "").replace("\r", "");
+        String importe = request.getParameter("importe").replace("\n", "").replace("\r", "");
+
          try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -88,14 +95,31 @@ public class form extends HttpServlet {
             out.println("<div class='separator'></div>");
             out.println("<div class='container'>");
             out.println("<h1>Webpage Form</h1>");
-             out.println("<form action='finish' method='POST'>");
-            out.println("<input class='input' type='text' name='fiscal' value='"+ fiscal +"'><br>");
-            out.println("<input class='input' type='text' name='csd' value='"+ csd +"'><br>");
-            out.println("<input class='input' type='text' name='emision' value='"+ emision +"'><br>");
+            out.println("<form action='finish' method='POST'>");
+            out.println("<input class='input' type='text' name='fiscal' id='fiscal'><br>");
+            out.println("<input class='input' type='text' name='csd' id='csd'><br>");
+            out.println("<input class='input' type='text' name='emision' id='emision'><br>");
+            
+            out.println("<input class='input' type='text' name='cantidad' id='cantidad'><br>");
+            out.println("<input class='input' type='text' name='unidad' id='unidad'><br>");
+            out.println("<input class='input' type='text' name='descripcion' id='descripcion'><br>");
+            out.println("<input class='input' type='text' name='preciounitario' id='preciounitario'><br>");
+            out.println("<input class='input' type='text' name='importe' id='importe'><br>");
+            
             out.println("<input type='submit' value='Finish' class='submit'>");
             out.println("</form>");
             out.println("</div>");
             out.println("</body>");
+            out.println("<script>");
+            out.println("document.getElementById('fiscal').value = '" + fiscal + "'");
+            out.println("document.getElementById('csd').value = '" + csd + "'");
+            out.println("document.getElementById('emision').value = '" + emision + "'");
+            out.println("document.getElementById('cantidad').value = '" + cantidad + "'");
+            out.println("document.getElementById('unidad').value = '" + unidad + "'");
+            out.println("document.getElementById('descripcion').value = '" + descripcion + "'");
+            out.println("document.getElementById('preciounitario').value = '" + preciounitario + "'");
+            out.println("document.getElementById('importe').value = '" + importe + "'");
+            out.println("</script>");
             out.println("</html>"); 
      }catch(Exception ex){ex.printStackTrace();}
             
